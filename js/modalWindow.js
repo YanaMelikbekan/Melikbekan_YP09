@@ -6,7 +6,7 @@ export function modalWindow() {
     })
     windowBlock.addEventListener('click', (e) => {
         e.preventDefault()
-        if(e.target.classList.contains('popup-close')){
+        if((e.target.classList.contains('popup-close'))||(e.target.classList.contains('popup-call'))){
             windowBlock.style.display='none'
         }
     })
