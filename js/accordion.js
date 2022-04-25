@@ -1,19 +1,18 @@
 export function accordion() {
-    const titleOne = document.querySelector('#headingOne-two')
-    const textOne = document.querySelector('#collapseOne-two')
-    const titleTwo = document.querySelector('#headingTwo-two')
-    const textTwo = document.querySelector('#collapseTwo-two')
-    const titleThree = document.querySelector('#headingThree-two')
-    const textThree = document.querySelector('#collapseThree-two')
-    
-        titleOne.addEventListener('click',()=>{
-            textOne.style.display='none'
-        })
-        titleTwo.addEventListener('click',()=>{
-            textTwo.style.display='block'
-        })
-        titleThree.addEventListener('click',()=>{
-            textThree.style.display='block'
-        })
+    const allText = document.querySelectorAll('.panel-collapse')
+    const allContent = document.querySelectorAll('.panel-group');
 
+    allContent.forEach((elem) => {
+        elem.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (e.target.closest('.panel-heading')) {
+                allText.forEach((e) => {
+                    e.style.display = 'none';
+                })
+                let block = e.target.closest('.panel');
+                let text = block.querySelector('.panel-collapse');
+                text.style.display = 'block';
+            }
+        })
+    })
 }
